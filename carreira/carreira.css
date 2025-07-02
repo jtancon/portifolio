@@ -1,0 +1,204 @@
+/* ------------------- */
+/* Estilos Base */
+/* ------------------- */
+:root {
+    --cor-fundo-claro: #EAE6E7;
+    --cor-fundo-principal: #FFFFFF;
+    --cor-texto-escuro: #4D4D4D;
+    --cor-cinza-medio: #A9A9A9;
+    --cor-borda: #DDDDDD;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--cor-fundo-principal);
+    color: var(--cor-texto-escuro);
+    line-height: 1.7;
+}
+
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--cor-fundo-claro);
+}
+
+h3 {
+    font-size: 1.8rem;
+    color: var(--cor-texto-escuro);
+    margin-bottom: 0.5rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ------------------- */
+/* Cabeçalho */
+/* ------------------- */
+.navbar {
+    background-color: var(--cor-fundo-principal);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--cor-fundo-claro);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.btn-voltar {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--cor-texto-escuro);
+    color: var(--cor-fundo-claro);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.btn-voltar:hover {
+    background-color: #333;
+}
+
+/* ------------------- */
+/* Conteúdo Principal */
+/* ------------------- */
+main {
+    padding-top: 2rem;
+}
+
+.content-section {
+    padding: 4rem 0;
+}
+
+.content-section.alt-bg {
+    background-color: var(--cor-fundo-claro);
+}
+
+/* Seção de Experiência */
+.experience-item ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.experience-item li {
+    margin-bottom: 0.5rem;
+}
+
+.company-info {
+    font-style: italic;
+    color: var(--cor-cinza-medio);
+    margin-bottom: 1rem;
+}
+
+/* Seção de Educação */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.education-item {
+    background-color: var(--cor-fundo-principal);
+    padding: 1.5rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+}
+
+.education-item p {
+    color: var(--cor-cinza-medio);
+    margin-bottom: 0.5rem;
+}
+
+.education-item span {
+    font-weight: 700;
+}
+
+/* Seção de Habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background-color: var(--cor-fundo-principal);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--cor-borda);
+}
+
+.skill-category ul {
+    list-style: none;
+}
+
+.skill-category li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.skill-category li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--cor-texto-escuro);
+}
+
+/* ------------------- */
+/* Animações */
+/* ------------------- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ------------------- */
+/* Rodapé */
+/* ------------------- */
+.footer {
+    background-color: var(--cor-texto-escuro);
+    color: var(--cor-fundo-claro);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}

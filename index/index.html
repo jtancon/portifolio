@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <!-- O caminho para o CSS permanece o mesmo, pois está na mesma pasta -->
+    <link rel="stylesheet" href="index.css">
+    <!-- Google Fonts para um visual moderno -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">Meu Portfólio</h1>
+            <nav>
+                <ul>
+                    <li><a href="#welcome">Início</a></li>
+                    <!-- Caminho atualizado para a pasta 'projetos' -->
+                    <li><a href="../projetos/projetos.html">Projetos</a></li>
+                    <!-- Caminho atualizado para a pasta 'carreira' -->
+                    <li><a href="../carreira/carreira.html">Carreira</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção de Boas-vindas -->
+    <main>
+        <section id="welcome" class="welcome-section">
+            <div class="container">
+                <h2>Bem-vindo(a)!</h2>
+                <p>Sou um Desenvolvedor Full-Stack apaixonado por criar soluções inovadoras e eficientes. Tenho experiência em construir aplicações web completas, do back-end ao front-end, utilizando as tecnologias mais modernas do mercado.</p>
+            </div>
+        </section>
+
+        <!-- Seção de Projetos -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2>Meus Projetos</h2>
+                <div class="project-grid">
+                    <!-- Projeto 1 -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/4D4D4D/EAE6E7?text=Controle+Solidário" alt="Imagem do Projeto Controle Solidário" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                        <h3>Controle Solidário</h3>
+                        <p>Aplicação desktop em JavaFX para gestão de estoque de uma ONG.</p>
+                        <!-- Caminho atualizado para a pasta 'projetos' -->
+                        <a href="../projetos/projetos.html#controle-solidario" class="btn">Ver Detalhes</a>
+                    </div>
+                    <!-- Projeto 2 -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/A9A9A9/FFFFFF?text=Jarvitos" alt="Imagem do Projeto Jarvitos" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                        <h3>Jarvitos - Discord Bot</h3>
+                        <p>Bot multifuncional para Discord utilizando Node.js e Discord.js.</p>
+                        <!-- Caminho atualizado para a pasta 'projetos' -->
+                        <a href="../projetos/projetos.html#jarvitos" class="btn">Ver Detalhes</a>
+                    </div>
+                    <!-- Projeto 3 -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/4D4D4D/EAE6E7?text=App+de+Tarefas" alt="Imagem do Projeto de App de Tarefas" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                        <h3>App de Gerenciamento de Tarefas</h3>
+                        <p>Projeto de um aplicativo Android para organização de tarefas diárias.</p>
+                        <!-- Caminho atualizado para a pasta 'projetos' -->
+                        <a href="../projetos/projetos.html#proj-android" class="btn">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Carreira Atualizada -->
+        <section id="career" class="career-section">
+            <div class="container">
+                <h2>Carreira Profissional</h2>
+                <div class="timeline">
+                    <!-- Experiência na Cast Group -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Trainee SAP</h3>
+                            <span class="date">Empresa: Cast Group (2024 - Atualmente)</span>
+                            <p>Monitoramento de sistemas SAP, garantindo a estabilidade e performance das operações.</p>
+                        </div>
+                    </div>
+                    <!-- Experiência na Rumo -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Téc. Administrativo de Operações SR</h3>
+                            <span class="date">Empresa: Rumo (2023 - 2024)</span>
+                            <p>Criação de apps (Power Apps), automações (Power Automate) e dashboards (Power BI) para otimização de processos.</p>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Botão para ver mais detalhes da carreira -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <!-- Caminho atualizado para a pasta 'carreira' -->
+                    <a href="../carreira/carreira.html" class="btn">Ver Mais Detalhes</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Contato -->
+        <section id="contact" class="contact-section">
+             <div class="container">
+                <h2>Contato</h2>
+                <p>Vamos conversar! Entre em contato por um dos canais abaixo.</p>
+                <div class="contact-links">
+                    <a href="mailto:joao.tancon@outlook.com" class="contact-link" title="E-mail">
+                        <i class="fas fa-envelope"></i>
+                        <span>joao.tancon@outlook.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/joão-victor-monteiro-tancon-b83656222/" target="_blank" class="contact-link" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://wa.me/5541988264396" target="_blank" class="contact-link" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>(41) 98826-4396</span>
+                    </a>
+                </div>
+             </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 João Victor Monteiro Tancon. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- O caminho para o JS permanece o mesmo, pois está na mesma pasta -->
+    <script src="index.js"></script>
+</body>
+</html>
