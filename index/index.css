@@ -24,6 +24,7 @@ body {
     background-color: var(--cor-fundo-principal);
     color: var(--cor-texto-escuro);
     line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -60,7 +61,7 @@ section {
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, background-color 0.3s;
 }
 
 .navbar .container {
@@ -72,6 +73,12 @@ section {
 .navbar .logo {
     font-size: 1.5rem;
     font-weight: 700;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .navbar nav ul {
@@ -91,27 +98,29 @@ section {
     color: var(--cor-texto-escuro);
 }
 
+.theme-btn {
+    background: none;
+    border: none;
+    color: var(--cor-texto-escuro);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
 /* ------------------- */
 /* Seções Principais */
 /* ------------------- */
 main {
-    padding-top: 60px; /* Altura do navbar */
+    padding-top: 60px;
 }
 
-.welcome-section {
+.welcome-section, .career-section {
     background-color: var(--cor-fundo-claro);
-    text-align: center;
-}
-
-.welcome-section h2 {
-    font-size: 3rem;
-}
-
-.welcome-section p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto;
-    color: var(--cor-cinza-medio);
+    transition: background-color 0.3s;
 }
 
 .projects-section {
@@ -130,7 +139,7 @@ main {
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s, border-color 0.3s;
     display: flex;
     flex-direction: column;
 }
@@ -159,10 +168,6 @@ main {
 
 .project-card .btn {
     margin: 1.5rem;
-}
-
-.career-section {
-    background-color: var(--cor-fundo-claro);
 }
 
 /* Linha do Tempo da Carreira */
@@ -206,19 +211,20 @@ main {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: var(--cor-texto-escuro); /* Alterado para a cor de texto escura */
-    border: 4px solid var(--cor-fundo-claro); /* Alterado para a cor de fundo da seção */
-    top: 30px; 
+    background-color: var(--cor-texto-escuro);
+    border: 4px solid var(--cor-fundo-claro);
+    top: 30px;
     border-radius: 50%;
     z-index: 1;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .timeline-item:nth-child(odd)::after {
-    right: -10px; /* Ajustado de -12px para -10px para centralizar */
+    right: -10px;
 }
 
 .timeline-item:nth-child(even)::after {
-    left: -10px; /* Ajustado de -12px para -10px para centralizar */
+    left: -10px;
 }
 
 .timeline-content {
@@ -226,6 +232,7 @@ main {
     background-color: var(--cor-fundo-principal);
     border-radius: 8px;
     border: 1px solid var(--cor-borda);
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .timeline-content h3 {
@@ -241,7 +248,7 @@ main {
     margin-bottom: 10px;
 }
 
-/* Seção de Contato Atualizada */
+/* Seção de Contato */
 .contact-section {
     text-align: center;
 }
@@ -274,7 +281,6 @@ main {
     font-size: 1.8rem;
 }
 
-
 /* ------------------- */
 /* Elementos Gerais */
 /* ------------------- */
@@ -286,7 +292,7 @@ main {
     text-decoration: none;
     border-radius: 5px;
     font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
 .btn:hover {
@@ -302,6 +308,7 @@ main {
     color: var(--cor-fundo-claro);
     text-align: center;
     padding: 2rem 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* ------------------- */
@@ -318,6 +325,47 @@ main {
     transform: translateY(0);
 }
 
+/* ------------------- */
+/* MODO ESCURO (DARK MODE) */
+/* ------------------- */
+body.dark-mode {
+    --cor-fundo-claro: #3a3a3a;
+    --cor-fundo-principal: #2c2c2c;
+    --cor-texto-escuro: #EAE6E7;
+    --cor-cinza-medio: #A9A9A9;
+    --cor-borda: #4D4D4D;
+}
+
+body.dark-mode .timeline-item::after {
+    background-color: var(--cor-texto-escuro);
+    border-color: var(--cor-fundo-claro);
+}
+
+body.dark-mode .btn {
+    background-color: var(--cor-cinza-medio);
+    color: #2c2c2c;
+}
+
+body.dark-mode .btn:hover {
+    background-color: var(--cor-fundo-claro);
+}
+
+body.dark-mode .contact-link {
+    color: var(--cor-cinza-medio);
+}
+
+body.dark-mode .contact-link:hover {
+    color: var(--cor-texto-escuro);
+}
+
+body.dark-mode .footer {
+    background-color: #1f1f1f;
+    color: var(--cor-cinza-medio);
+}
+
+body.dark-mode .project-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
 
 /* ------------------- */
 /* Responsividade */
@@ -332,8 +380,13 @@ main {
         gap: 1rem;
     }
     
+    .navbar nav {
+        width: 100%;
+        justify-content: space-between;
+    }
+
     main {
-        padding-top: 110px; /* Ajuste para o navbar empilhado */
+        padding-top: 110px;
     }
 
     .contact-links {
@@ -341,7 +394,6 @@ main {
         gap: 1.5rem;
     }
 
-    /* Ajuste da Linha do Tempo para telas menores */
     .timeline::after {
         left: 31px;
     }
