@@ -1,416 +1,76 @@
-/* ------------------- */
-/* Reset e Estilos Base */
-/* ------------------- */
+/*
+  Definindo as cores da paleta como variáveis CSS para fácil utilização.
+  Isso centraliza a definição de cores, facilitando a manutenção.
+*/
 :root {
-    --cor-fundo-claro: #EAE6E7;
-    --cor-fundo-principal: #FFFFFF;
-    --cor-texto-escuro: #4D4D4D;
-    --cor-cinza-medio: #A9A9A9;
-    --cor-borda: #DDDDDD;
+    --light-gray: #f2f2f2;
+    --teal: #348e91;
+    --dark-teal: #1c5052;
+    --dark-cyan: #213635;
+    --near-black: #0a0c0d;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+/*
+  Estilos base para o corpo da página.
+  - Define a fonte principal para 'Inter'.
+  - Define a cor de fundo e a cor do texto padrão.
+  - Usa flexbox para garantir que o rodapé fique no final da página, mesmo em conteúdo curto.
+*/
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--cor-fundo-principal);
-    color: var(--cor-texto-escuro);
-    line-height: 1.6;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-h1, h2, h3 {
-    color: var(--cor-texto-escuro);
-    line-height: 1.2;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-section {
-    padding: 6rem 0;
-}
-
-/* ------------------- */
-/* Cabeçalho e Navegação */
-/* ------------------- */
-.navbar {
-    background-color: var(--cor-fundo-principal);
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--cor-fundo-claro);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    transition: box-shadow 0.3s ease, background-color 0.3s;
-}
-
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.navbar nav {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.navbar nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-.navbar nav a {
-    text-decoration: none;
-    color: var(--cor-cinza-medio);
-    font-weight: 700;
-    transition: color 0.3s ease;
-}
-
-.navbar nav a:hover {
-    color: var(--cor-texto-escuro);
-}
-
-.theme-btn {
-    background: none;
-    border: none;
-    color: var(--cor-texto-escuro);
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.theme-btn:hover {
-    transform: scale(1.1);
-}
-
-/* ------------------- */
-/* Seções Principais */
-/* ------------------- */
-main {
-    padding-top: 60px;
-}
-
-.welcome-section, .career-section {
-    background-color: var(--cor-fundo-claro);
-    transition: background-color 0.3s;
-}
-
-.projects-section {
-    background-color: var(--cor-fundo-principal);
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.project-card {
-    background-color: var(--cor-fundo-principal);
-    border: 1px solid var(--cor-borda);
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s, border-color 0.3s;
+    background-color: var(--near-black);
+    color: var(--light-gray);
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.project-card h3 {
-    margin: 1.5rem 0 0.5rem;
-    font-size: 1.5rem;
-}
-
-.project-card p {
-    padding: 0 1.5rem;
+/*
+  Garante que o conteúdo principal (main) ocupe o espaço disponível,
+  empurrando o rodapé para baixo.
+*/
+main {
     flex-grow: 1;
-    color: var(--cor-cinza-medio);
 }
 
-.project-card .btn {
-    margin: 1.5rem;
+/*
+  Classes utilitárias para aplicar as cores da paleta.
+  Embora o Tailwind CSS seja usado, essas classes garantem que
+  os estilos específicos da paleta sejam aplicados corretamente.
+*/
+.bg-near-black { background-color: var(--near-black); }
+.bg-dark-cyan { background-color: var(--dark-cyan); }
+.bg-dark-teal { background-color: var(--dark-teal); }
+.text-light-gray { color: var(--light-gray); }
+.text-teal { color: var(--teal); }
+.border-teal { border-color: var(--teal); }
+
+/*
+  Efeitos de hover para interatividade.
+*/
+.hover\:bg-teal:hover { background-color: var(--teal); }
+.hover\:text-near-black:hover { color: var(--near-black); }
+
+/*
+  Sombra customizada usando a cor de destaque da paleta.
+*/
+.shadow-teal { 
+    box-shadow: 0 0 20px 0 rgba(52, 142, 145, 0.4); 
 }
 
-/* Linha do Tempo da Carreira */
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.timeline::after {
+/*
+  Estilo para o indicador visual na linha do tempo da carreira.
+  - Cria um círculo usando pseudo-elemento ::before.
+  - Posiciona o círculo à esquerda da linha vertical.
+*/
+.timeline-item::before {
     content: '';
     position: absolute;
-    width: 4px;
-    background-color: var(--cor-cinza-medio);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -2px;
-}
-
-.timeline-item {
-    padding: 10px 40px;
-    position: relative;
-    width: 50%;
-}
-
-.timeline-item:nth-child(odd) {
-    left: 0;
-    padding-right: 60px;
-    text-align: right;
-}
-
-.timeline-item:nth-child(even) {
-    left: 50%;
-    padding-left: 60px;
-    text-align: left;
-}
-
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: var(--cor-texto-escuro);
-    border: 4px solid var(--cor-fundo-claro);
-    top: 30px;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
-    z-index: 1;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-.timeline-item:nth-child(odd)::after {
-    right: -10px;
-}
-
-.timeline-item:nth-child(even)::after {
-    left: -10px;
-}
-
-.timeline-content {
-    padding: 20px 30px;
-    background-color: var(--cor-fundo-principal);
-    border-radius: 8px;
-    border: 1px solid var(--cor-borda);
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-.timeline-content h3 {
-    font-size: 1.5rem;
-}
-
-.timeline-content .date {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--cor-cinza-medio);
-    display: block;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-/* Seção de Contato */
-.contact-section {
-    text-align: center;
-}
-
-.contact-links {
-    margin-top: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    text-decoration: none;
-    color: var(--cor-cinza-medio);
-    font-size: 1.1rem;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.contact-link:hover {
-    color: var(--cor-texto-escuro);
-    transform: translateY(-3px);
-}
-
-.contact-link i {
-    font-size: 1.8rem;
-}
-
-/* ------------------- */
-/* Elementos Gerais */
-/* ------------------- */
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: var(--cor-texto-escuro);
-    color: var(--cor-fundo-claro);
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #333;
-    transform: scale(1.05);
-}
-
-/* ------------------- */
-/* Rodapé */
-/* ------------------- */
-.footer {
-    background-color: var(--cor-texto-escuro);
-    color: var(--cor-fundo-claro);
-    text-align: center;
-    padding: 2rem 0;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* ------------------- */
-/* Animações */
-/* ------------------- */
-.fade-in-element {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-element.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ------------------- */
-/* MODO ESCURO (DARK MODE) */
-/* ------------------- */
-body.dark-mode {
-    --cor-fundo-claro: #3a3a3a;
-    --cor-fundo-principal: #2c2c2c;
-    --cor-texto-escuro: #EAE6E7;
-    --cor-cinza-medio: #A9A9A9;
-    --cor-borda: #4D4D4D;
-}
-
-body.dark-mode .timeline-item::after {
-    background-color: var(--cor-texto-escuro);
-    border-color: var(--cor-fundo-claro);
-}
-
-body.dark-mode .btn {
-    background-color: var(--cor-cinza-medio);
-    color: #2c2c2c;
-}
-
-body.dark-mode .btn:hover {
-    background-color: var(--cor-fundo-claro);
-}
-
-body.dark-mode .contact-link {
-    color: var(--cor-cinza-medio);
-}
-
-body.dark-mode .contact-link:hover {
-    color: var(--cor-texto-escuro);
-}
-
-body.dark-mode .footer {
-    background-color: #1f1f1f;
-    color: var(--cor-cinza-medio);
-}
-
-body.dark-mode .project-card:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* ------------------- */
-/* Responsividade */
-/* ------------------- */
-@media (max-width: 768px) {
-    h2 {
-        font-size: 2rem;
-    }
-
-    .navbar .container {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .navbar nav {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    main {
-        padding-top: 110px;
-    }
-
-    .contact-links {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .timeline::after {
-        left: 31px;
-    }
-
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even) {
-        left: 0;
-        text-align: left;
-    }
-
-    .timeline-item::after {
-        left: 19px;
-    }
+    background-color: var(--teal);
+    left: -2.7rem; /* Ajusta a posição para fora da linha */
+    top: 0.25rem;
+    border: 3px solid var(--dark-cyan);
 }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habilidades | João Victor Monteiro Tancon</title>
+    
+    <!-- Tailwind CSS (usado para prototipagem rápida e classes utilitárias) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Link para seu arquivo de estilos customizado -->
+    <link rel="stylesheet" href="habilidades.css">
+    
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-near-black text-light-gray">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-dark-cyan/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../Index/index.html" class="text-2xl font-bold text-teal">João Victor M. Tancon</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../Sobre/sobre.html" class="hover:text-teal transition duration-300">Sobre</a>
+                <a href="../Carreira/carreira.html" class="hover:text-teal transition duration-300">Carreira</a>
+                <a href="../Habilidades/habilidades.html" class="hover:text-teal transition duration-300">Habilidades</a>
+                <a href="../Curriculo/curriculo.html" class="hover:text-teal transition duration-300">Currículo</a>
+                <a href="../Contato/contato.html" class="bg-teal text-near-black font-bold py-2 px-4 rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-light-gray focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="sobre.html" class="block py-2 hover:text-teal transition duration-300">Sobre</a>
+            <a href="carreira.html" class="block py-2 hover:text-teal transition duration-300">Carreira</a>
+            <a href="habilidades.html" class="block py-2 text-teal transition duration-300">Habilidades</a>
+            <a href="curriculo.html" class="block py-2 hover:text-teal transition duration-300">Currículo</a>
+            <a href="contato.html" class="block mt-2 py-2 text-center bg-teal text-near-black font-bold rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-6">
+        <!-- Seção Habilidades -->
+        <section id="skills" class="py-20 md:py-32">
+            <h2 class="text-4xl font-bold text-center mb-16">Minhas <span class="text-teal">Habilidades</span></h2>
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                
+                <!-- Categoria 1: Programação -->
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-6 text-teal">Programação</h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Kotlin</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Java</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Python</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">JavaScript</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">PHP</span>
+                    </div>
+                </div>
+                
+                <!-- Categoria 2: Banco de Dados -->
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-6 text-teal">Banco de Dados</h3>
+                     <div class="flex flex-wrap justify-center gap-3">
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">SAP HANA</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">MaxDB</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Sybase</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Firebase</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">SQL (Intermediário)</span>
+                     </div>
+                </div>
+
+                <!-- Categoria 3: Ferramentas e Plataformas -->
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold text-center mb-6 text-teal">Ferramentas, Plataformas e Outros</h3>
+                     <div class="flex flex-wrap justify-center gap-3">
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Power Apps (Avançado)</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Excel (Avançado)</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Power BI (Intermediário)</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Power Automate</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">SAP BASIS</span>
+                        <span class="bg-dark-cyan text-light-gray text-lg font-medium px-4 py-2 rounded-full">Inglês (Intermediário)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-near-black py-8">
+        <div class="container mx-auto px-6 text-center text-light-gray/70">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/joão-victor-monteiro-tancon-b83656222/" target="_blank" class="hover:text-teal transition duration-300">LinkedIn</a>
+                <a href="#" class="hover:text-teal transition duration-300">GitHub</a>
+            </div>
+            <p>&copy; 2024 João Victor Monteiro Tancon. Construído com <span class="text-teal">&hearts;</span>.</p>
+        </div>
+    </footer>
+
+    <!-- Link para o seu arquivo JavaScript -->
+    <script src="habilidades.js"></script>
+
+</body>
+</html>
