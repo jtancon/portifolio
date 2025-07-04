@@ -3,94 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Projetos - Portfólio João Victor</title>
-    <!-- Link para a folha de estilos da página de projetos -->
+    <title>Projetos | João Victor Monteiro Tancon</title>
+    
+    <!-- Tailwind CSS (usado para prototipagem rápida e classes utilitárias) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Link para seu arquivo de estilos customizado -->
     <link rel="stylesheet" href="projetos.css">
-    <!-- Google Fonts -->
+    
+    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-near-black text-light-gray">
 
-    <!-- Cabeçalho Fixo -->
-    <header class="navbar">
-        <div class="container">
-            <h1 class="logo">Meus Projetos</h1>
-            <a href="../index/index.html" class="btn-voltar">Voltar ao Início</a>
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-dark-cyan/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index/index.html" class="text-2xl font-bold text-teal">João Victor M. Tancon</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../sobre/sobre.html" class="hover:text-teal transition duration-300">Sobre</a>
+                <a href="../carreira/carreira.html" class="hover:text-teal transition duration-300">Carreira</a>
+                <a href="../habilidades/habilidades.html" class="hover:text-teal transition duration-300">Habilidades</a>
+                <a href="../projetos/projetos.html" class="text-teal transition duration-300">Projetos</a>
+                <a href="../curriculo/curriculo.html" class="hover:text-teal transition duration-300">Currículo</a>
+                <a href="../contato/contato.html" class="bg-teal text-near-black font-bold py-2 px-4 rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-light-gray focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="../sobre/sobre.html" class="block py-2 hover:text-teal transition duration-300">Sobre</a>
+            <a href="../carreira/carreira.html" class="block py-2 hover:text-teal transition duration-300">Carreira</a>
+            <a href="../habilidades/habilidades.html" class="block py-2 hover:text-teal transition duration-300">Habilidades</a>
+            <a href="../projetos/projetos.html" class="block py-2 text-teal transition duration-300">Projetos</a>
+            <a href="../curriculo/curriculo.html" class="block py-2 hover:text-teal transition duration-300">Currículo</a>
+            <a href="../contato/contato.html" class="block mt-2 py-2 text-center bg-teal text-near-black font-bold rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
         </div>
     </header>
 
-    <main class="container">
-        <!-- Projeto 1: Controle Solidário -->
-        <section id="controle-solidario" class="project-detail">
-            <img src="https://placehold.co/800x400/4D4D4D/EAE6E7?text=Controle+Solidário" alt="Imagem do Projeto Controle Solidário" class="project-image" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/ffffff?text=Image+Not+Found';">
-            <div class="project-content">
-                <h2>Controle Solidário</h2>
-                <div class="project-meta">
-                    <span><strong>Data:</strong> Outubro de 2022</span>
-                    <span><strong>Participantes:</strong> João Victor M. Tancon</span>
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-6">
+        <!-- Seção Projetos -->
+        <section id="projects" class="py-20 md:py-32">
+            <h2 class="text-4xl font-bold text-center mb-16">Meus <span class="text-teal">Projetos</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Projeto 1 -->
+                <div class="bg-dark-cyan rounded-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 shadow-lg flex flex-col">
+                    <img src="https://placehold.co/600x400/1c5052/f2f2f2?text=Migração+S/4HANA" alt="Imagem do Projeto de Migração S/4HANA" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2 text-teal">Migração para S/4HANA</h3>
+                        <p class="text-light-gray/80 mb-4 flex-grow">Atuação na análise de prontidão, planeamento e execução da migração de um ambiente ECC 6.0 para S/4HANA, incluindo a conversão do banco de dados para HANA.</p>
+                        <a href="#" class="text-teal font-semibold hover:underline mt-auto">Ver Detalhes &rarr;</a>
+                    </div>
                 </div>
-                <p>Aplicação desktop para controle de estoque de uma ONG, desenvolvida para otimizar a gestão de doações e distribuições. O sistema ajuda a organizar os itens recebidos e a registrar as saídas, facilitando o trabalho voluntário.</p>
-                <div class="project-tech">
-                    <strong>Tecnologias:</strong>
-                    <span>Java</span>
-                    <span>JavaFX</span>
-                    <span>MySQL</span>
+                
+                <!-- Projeto 2 -->
+                <div class="bg-dark-cyan rounded-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 shadow-lg flex flex-col">
+                    <img src="https://placehold.co/600x400/1c5052/f2f2f2?text=App+Fiori" alt="Imagem do Projeto de App Fiori" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2 text-teal">App Fiori de Aprovação</h3>
+                        <p class="text-light-gray/80 mb-4 flex-grow">Desenvolvimento de um aplicativo SAP Fiori/UI5 para otimizar o processo de aprovação de pedidos, integrado com o backend SAP via OData services.</p>
+                        <a href="#" class="text-teal font-semibold hover:underline mt-auto">Ver Detalhes &rarr;</a>
+                    </div>
                 </div>
-                <a href="https://github.com/jtancon/Controle-Solidario" target="_blank" class="btn">Ver no GitHub</a>
-            </div>
-        </section>
+                
+                 <!-- Projeto 3 -->
+                <div class="bg-dark-cyan rounded-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 shadow-lg flex flex-col">
+                    <img src="https://placehold.co/600x400/1c5052/f2f2f2?text=Automação+Basis" alt="Imagem do Projeto de Automação de Rotinas Basis" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2 text-teal">Automação de Rotinas Basis</h3>
+                        <p class="text-light-gray/80 mb-4 flex-grow">Criação de scripts (Python/Shell) para automação de tarefas de monitorização diária, health check e gestão de transportes (TMS).</p>
+                        <a href="#" class="text-teal font-semibold hover:underline mt-auto">Ver Detalhes &rarr;</a>
+                    </div>
+                </div>
 
-        <!-- Projeto 2: Jarvitos -->
-        <section id="jarvitos" class="project-detail">
-            <img src="https://placehold.co/800x400/A9A9A9/FFFFFF?text=Jarvitos+Discord+Bot" alt="Imagem do Projeto Jarvitos" class="project-image" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/ffffff?text=Image+Not+Found';">
-            <div class="project-content">
-                <h2>Jarvitos - Discord Bot</h2>
-                <div class="project-meta">
-                    <span><strong>Data:</strong> Julho de 2022</span>
-                    <span><strong>Participantes:</strong> João Victor M. Tancon</span>
-                </div>
-                <p>Um bot multifuncional para Discord, criado para automatizar tarefas e adicionar funcionalidades de entretenimento em servidores. O projeto explora a integração com APIs e a programação assíncrona.</p>
-                <div class="project-tech">
-                    <strong>Tecnologias:</strong>
-                    <span>JavaScript</span>
-                    <span>Node.js</span>
-                    <span>Discord.js</span>
-                </div>
-                <a href="https://github.com/jtancon/Jarvitos" target="_blank" class="btn">Ver no GitHub</a>
-            </div>
-        </section>
-
-        <!-- Projeto 3: App de Tarefas Android -->
-        <section id="proj-android" class="project-detail">
-            <img src="https://placehold.co/800x400/4D4D4D/EAE6E7?text=App+de+Tarefas+Android" alt="Imagem do Projeto Android" class="project-image" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/ffffff?text=Image+Not+Found';">
-            <div class="project-content">
-                <h2>App de Gerenciamento de Tarefas (Android)</h2>
-                <div class="project-meta">
-                    <span><strong>Data:</strong> Maio de 2022</span>
-                    <span><strong>Participantes:</strong> Ray Govaski, João Victor M. Tancon</span>
-                </div>
-                <p>Projeto acadêmico de um aplicativo para Android focado em gerenciamento de tarefas. O app permite ao usuário criar, organizar e acompanhar suas atividades diárias de forma simples e intuitiva.</p>
-                <div class="project-tech">
-                    <strong>Tecnologias:</strong>
-                    <span>Java</span>
-                    <span>Android Studio</span>
-                    <span>XML</span>
-                </div>
-                <a href="https://github.com/RayGovaski/Proj_Android" target="_blank" class="btn">Ver no GitHub</a>
             </div>
         </section>
     </main>
 
     <!-- Rodapé -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 João Victor Monteiro Tancon. Todos os direitos reservados.</p>
+    <footer class="bg-near-black py-8">
+        <div class="container mx-auto px-6 text-center text-light-gray/70">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/joão-victor-monteiro-tancon-b83656222/" target="_blank" class="hover:text-teal transition duration-300">LinkedIn</a>
+                <a href="#" class="hover:text-teal transition duration-300">GitHub</a>
+            </div>
+            <p>&copy; 2024 João Victor Monteiro Tancon. Construído com <span class="text-teal">&hearts;</span>.</p>
         </div>
     </footer>
 
-    <!-- Link para o arquivo JavaScript -->
+    <!-- Link para o seu arquivo JavaScript -->
     <script src="projetos.js"></script>
+
 </body>
 </html>
