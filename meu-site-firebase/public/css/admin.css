@@ -1,0 +1,39 @@
+/*
+  Definindo as cores da paleta como variáveis CSS para fácil utilização.
+  Isso centraliza a definição de cores, facilitando a manutenção.
+*/
+:root {
+    --light-gray: #f2f2f2;
+    --teal: #348e91;
+    --dark-teal: #1c5052;
+    --dark-cyan: #213635;
+    --near-black: #0a0c0d;
+}
+
+/*
+  Estilos base para o corpo da página.
+  - Define a fonte principal para 'Inter'.
+  - Define a cor de fundo e a cor do texto padrão.
+  - Garante que a página ocupe toda a altura da tela.
+*/
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--near-black);
+    color: var(--light-gray);
+    min-height: 100vh;
+}
+
+/*
+  Classes utilitárias para garantir que as cores da paleta sejam aplicadas
+  corretamente, complementando o Tailwind CSS.
+*/
+.bg-near-black { background-color: var(--near-black); }
+.bg-dark-cyan { background-color: var(--dark-cyan); }
+.text-teal { color: var(--teal); }
+
+/*
+  Estilo para a borda dos inputs quando em foco, usando a cor de destaque.
+*/
+.focus\:border-teal:focus {
+    border-color: var(--teal);
+}

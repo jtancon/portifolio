@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos | João Victor Monteiro Tancon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/projetos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-near-black text-light-gray">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-dark-cyan/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-teal">João Victor M. Tancon</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="/sobre.html" class="hover:text-teal transition duration-300">Sobre</a>
+                <a href="/carreira.html" class="hover:text-teal transition duration-300">Carreira</a>
+                <a href="/habilidades.html" class="hover:text-teal transition duration-300">Habilidades</a>
+                <a href="/curriculo.html" class="hover:text-teal transition duration-300">Currículo</a>
+                <a href="/projetos.html" class="hover:text-teal transition duration-300">Projetos</a>
+                <a href="/contato.html" class="bg-teal text-near-black font-bold py-2 px-4 rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-light-gray focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="/sobre.html" class="block py-2 hover:text-teal transition duration-300">Sobre</a>
+            <a href="/carreira.html" class="block py-2 hover:text-teal transition duration-300">Carreira</a>
+            <a href="/habilidades.html" class="block py-2 hover:text-teal transition duration-300">Habilidades</a>
+            <a href="/projetos.html" class="block py-2 text-teal transition duration-300">Projetos</a>
+            <a href="/curriculo.html" class="block py-2 hover:text-teal transition duration-300">Currículo</a>
+            <a href="/contato.html" class="block mt-2 py-2 text-center bg-teal text-near-black font-bold rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-6">
+        <section id="projects" class="py-20 md:py-32">
+            <h2 class="text-4xl font-bold text-center mb-16">Meus <span class="text-teal">Projetos</span></h2>
+            <!-- Container que será preenchido pelo Firebase -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <p id="loading-message" class="col-span-full text-center text-light-gray/80">Carregando projetos...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-near-black py-8">
+        <div class="container mx-auto px-6 text-center text-light-gray/70">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/joão-victor-monteiro-tancon-b83656222/" target="_blank" class="hover:text-teal transition duration-300">LinkedIn</a>
+                <a href="https://github.com/jtancon" target="_blank" class="hover:text-teal transition duration-300">GitHub</a>
+            </div>
+            <p>&copy; 2025 João Victor Monteiro Tancon. Construído com <span class="text-teal">&hearts;</span>.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts do Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCjE0wWz8qTl341SksRTTHtObyP-vz9-KU",
+            authDomain: "portifolio-40cca.firebaseapp.com",
+            projectId: "portifolio-40cca",
+            storageBucket: "portifolio-40cca.appspot.com",
+            messagingSenderId: "506343678525",
+            appId: "1:506343678525:web:1e737d2ff9744834648054",
+            measurementId: "G-V9GD24SKWQ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        function createProjectCard(project) {
+            const imageUrl = project.imagemUrl || `https://placehold.co/600x400/1c5052/f2f2f2?text=${encodeURIComponent(project.Título)}`;
+            return `
+                <div class="bg-dark-cyan rounded-lg overflow-hidden transform hover:-translate-y-2 transition duration-300 shadow-lg flex flex-col">
+                    <img src="${imageUrl}" alt="Imagem do Projeto ${project.Título}" class="w-full h-48 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2 text-teal">${project.Título}</h3>
+                        <p class="text-light-gray/80 mb-4 flex-grow">${project.Descrição}</p>
+                        <a href="${project.Link}" target="_blank" class="text-teal font-semibold hover:underline mt-auto">Ver no GitHub &rarr;</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function loadProjects() {
+            const projectsGrid = document.getElementById('projects-grid');
+            const loadingMessage = document.getElementById('loading-message');
+            
+            onSnapshot(collection(db, "Projetos"), (snapshot) => {
+                if (loadingMessage) loadingMessage.remove();
+                projectsGrid.innerHTML = '';
+                if (snapshot.empty) {
+                    projectsGrid.innerHTML = '<p class="col-span-full text-center">Nenhum projeto encontrado.</p>';
+                } else {
+                    snapshot.forEach((doc) => {
+                        projectsGrid.innerHTML += createProjectCard(doc.data());
+                    });
+                }
+            });
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loadProjects();
+            } else {
+                signInAnonymously(auth).catch(err => console.error("Erro no login anônimo:", err));
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Victor Monteiro Tancon | Consultor SAP & Desenvolvedor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-near-black text-light-gray">
+    <header class="bg-dark-cyan/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-teal">João Victor M. Tancon</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="/sobre.html" class="hover:text-teal transition duration-300">Sobre</a>
+                <a href="/carreira.html" class="hover:text-teal transition duration-300">Carreira</a>
+                <a href="/habilidades.html" class="hover:text-teal transition duration-300">Habilidades</a>
+                <a href="/curriculo.html" class="hover:text-teal transition duration-300">Currículo</a>
+                <a href="/projetos.html" class="hover:text-teal transition duration-300">Projetos</a>
+                <a href="/contato.html" class="bg-teal text-near-black font-bold py-2 px-4 rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-light-gray focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="/sobre.html" class="block py-2 hover:text-teal transition duration-300">Sobre</a>
+            <a href="/carreira.html" class="block py-2 hover:text-teal transition duration-300">Carreira</a>
+            <a href="/habilidades.html" class="block py-2 hover:text-teal transition duration-300">Habilidades</a>
+            <a href="/projetos.html" class="block py-2 text-teal transition duration-300">Projetos</a>
+            <a href="/curriculo.html" class="block py-2 hover:text-teal transition duration-300">Currículo</a>
+            <a href="/contato.html" class="block mt-2 py-2 text-center bg-teal text-near-black font-bold rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
+        </div>
+    </header>
+    <main class="container mx-auto px-6">
+        <section id="hero" class="min-h-[calc(100vh-150px)] flex items-center justify-center text-center">
+            <div class="max-w-4xl">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Consultor SAP <span class="text-teal">&</span> Desenvolvedor</h1>
+                <p class="text-xl md:text-2xl text-light-gray/80 mb-8">Especialista em otimizar a infraestrutura de sistemas SAP e em construir soluções de software robustas.</p>
+                <a href="/contato.html" class="block mt-2 py-2 text-center bg-teal text-near-black font-bold rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Vamos trabalhar juntos</a>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-near-black py-8">
+        <div class="container mx-auto px-6 text-center text-light-gray/70">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/joão-victor-monteiro-tancon-b83656222/" target="_blank" class="hover:text-teal transition duration-300">LinkedIn</a>
+                <a href="https://github.com/jtancon" target="_blank" class="hover:text-teal transition duration-300">GitHub</a>
+            </div>
+            <p>&copy; 2025 João Victor Monteiro Tancon. Construído com <span class="text-teal">&hearts;</span>.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT PARA O MENU MÓVEL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

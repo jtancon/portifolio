@@ -1,0 +1,40 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/sobre",
+        "destination": "/sobre.html"
+      },
+      {
+        "source": "/carreira",
+        "destination": "/carreira.html"
+      },
+      {
+        "source": "/habilidades",
+        "destination": "/habilidades.html"
+      },
+      {
+        "source": "/curriculo",
+        "destination": "/curriculo.html"
+      },
+      {
+        "source": "/projetos",
+        "destination": "/projetos.html"
+      },
+      {
+        "source": "/contato",
+        "destination": "/contato.html"
+      },
+      {
+        "source": "/admin",
+        "destination": "/admin.html"
+      }
+    ]
+  }
+}
