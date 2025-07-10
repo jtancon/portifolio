@@ -5,30 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João Victor Monteiro Tancon | Consultor SAP & Desenvolvedor</title>
     
-    <!-- Tailwind CSS (usado para prototipagem rápida e classes utilitárias) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Link para seu arquivo de estilos customizado -->
-    <link rel="stylesheet" href="index.css">
+    <!-- Caminho corrigido para o CSS usando url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     
-    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="bg-near-black text-light-gray">
 
-    <!-- Cabeçalho e Navegação -->
     <header class="bg-dark-cyan/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="../Index/index.html" class="text-2xl font-bold text-teal">João Victor M. Tancon</a>
+            <!-- Links corrigidos usando url_for -->
+            <a href="{{ url_for('homepage') }}" class="text-2xl font-bold text-teal">João Victor M. Tancon</a>
             <div class="hidden md:flex items-center space-x-6">
-                <a href="../Sobre/sobre.html" class="hover:text-teal transition duration-300">Sobre</a>
-                <a href="../Carreira/carreira.html" class="hover:text-teal transition duration-300">Carreira</a>
-                <a href="../Habilidades/habilidades.html" class="hover:text-teal transition duration-300">Habilidades</a>
-                <a href="../Curriculo/curriculo.html" class="hover:text-teal transition duration-300">Currículo</a>
-                <a href="../Projetos/projetos.html" class="hover:text-teal transition duration-300">Projetos</a>
-                <a href="../Contato/contato.html" class="bg-teal text-near-black font-bold py-2 px-4 rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
+                <a href="{{ url_for('sobre') }}" class="hover:text-teal transition duration-300">Sobre</a>
+                <a href="{{ url_for('carreira') }}" class="hover:text-teal transition duration-300">Carreira</a>
+                <a href="{{ url_for('habilidades') }}" class="hover:text-teal transition duration-300">Habilidades</a>
+                <a href="{{ url_for('curriculo') }}" class="hover:text-teal transition duration-300">Currículo</a>
+                <a href="{{ url_for('projetos') }}" class="hover:text-teal transition duration-300">Projetos</a>
+                <a href="{{ url_for('contato') }}" class="bg-teal text-near-black font-bold py-2 px-4 rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
             </div>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-light-gray focus:outline-none">
@@ -36,30 +34,26 @@
                 </button>
             </div>
         </nav>
-        <!-- Menu Mobile -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="../Sobre/sobre.html" class="block py-2 hover:text-teal transition duration-300">Sobre</a>
-            <a href="../Carreira/carreira.html" class="block py-2 hover:text-teal transition duration-300">Carreira</a>
-            <a href="../Habilidades/habilidades.html" class="block py-2 hover:text-teal transition duration-300">Habilidades</a>
-            <a href="../Projetos/projetos.html" class="block py-2 text-teal transition duration-300">Projetos</a>
-            <a href="../Curriculo/curriculo.html" class="block py-2 hover:text-teal transition duration-300">Currículo</a>
-            <a href="../Contato/contato.html" class="block mt-2 py-2 text-center bg-teal text-near-black font-bold rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
+            <a href="{{ url_for('sobre') }}" class="block py-2 hover:text-teal transition duration-300">Sobre</a>
+            <a href="{{ url_for('carreira') }}" class="block py-2 hover:text-teal transition duration-300">Carreira</a>
+            <a href="{{ url_for('habilidades') }}" class="block py-2 hover:text-teal transition duration-300">Habilidades</a>
+            <a href="{{ url_for('projetos') }}" class="block py-2 text-teal transition duration-300">Projetos</a>
+            <a href="{{ url_for('curriculo') }}" class="block py-2 hover:text-teal transition duration-300">Currículo</a>
+            <a href="{{ url_for('contato') }}" class="block mt-2 py-2 text-center bg-teal text-near-black font-bold rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Contato</a>
         </div>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main class="container mx-auto px-6">
-        <!-- Seção Início -->
         <section id="hero" class="min-h-[calc(100vh-150px)] flex items-center justify-center text-center">
             <div class="max-w-4xl">
                 <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Consultor SAP <span class="text-teal">&</span> Desenvolvedor</h1>
                 <p class="text-xl md:text-2xl text-light-gray/80 mb-8">Especialista em otimizar a infraestrutura de sistemas SAP e em construir soluções de software robustas.</p>
-                <a href="../Contato/contato.html" class="block mt-2 py-2 text-center bg-teal text-near-black font-bold rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Vamos trabalhar juntos</a>
+                <a href="{{ url_for('contato') }}" class="block mt-2 py-2 text-center bg-teal text-near-black font-bold rounded-md hover:bg-dark-teal hover:text-light-gray transition duration-300">Vamos trabalhar juntos</a>
             </div>
         </section>
     </main>
 
-    <!-- Rodapé -->
     <footer class="bg-near-black py-8">
         <div class="container mx-auto px-6 text-center text-light-gray/70">
             <div class="flex justify-center space-x-6 mb-4">
@@ -70,8 +64,8 @@
         </div>
     </footer>
 
-    <!-- Link para o seu arquivo JavaScript -->
-    <script src="index.js"></script>
+    <!-- Caminho corrigido para o JS usando url_for -->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
 </body>
 </html>

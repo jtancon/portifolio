@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Painel de Controlo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        .modal-backdrop { background-color: rgba(0,0,0,0.5); }
+        textarea { resize: vertical; }
+    </style>
+</head>
+<body class="bg-near-black text-light-gray flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-4xl">
+        <!-- Seção de Login -->
+        <div id="login-section" class="bg-dark-cyan p-8 rounded-lg shadow-lg max-w-md mx-auto">
+            <h2 class="text-2xl font-bold text-center text-teal mb-6">Acesso Restrito</h2>
+            <form id="login-form">
+                <div class="mb-4">
+                    <label for="email" class="block text-light-gray/80 mb-2">Email</label>
+                    <input type="email" id="email" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-light-gray/80 mb-2">Senha</label>
+                    <input type="password" id="password" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                </div>
+                <button type="submit" class="w-full bg-teal text-near-black font-bold py-2 rounded-md hover:bg-dark-teal transition duration-300">Entrar</button>
+                <p id="login-error" class="text-red-500 text-center mt-4"></p>
+            </form>
+        </div>
+
+        <!-- Seção de Admin -->
+        <div id="admin-section" class="hidden w-full">
+            <div class="bg-dark-cyan p-6 sm:p-8 rounded-lg shadow-lg">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-teal">Painel de Controlo</h2>
+                    <button id="logout-button" class="text-sm text-teal hover:underline">Sair</button>
+                </div>
+
+                <!-- Abas de Navegação -->
+                <div class="border-b border-gray-600 mb-6">
+                    <nav class="flex space-x-4" aria-label="Tabs">
+                        <button id="tab-projetos" class="tab-button text-light-gray/70 hover:text-light-gray px-3 py-2">Projetos</button>
+                        <button id="tab-cursos" class="tab-button text-light-gray/70 hover:text-light-gray px-3 py-2">Cursos</button>
+                        <button id="tab-carreira" class="tab-button text-light-gray/70 hover:text-light-gray px-3 py-2">Carreira</button>
+                        <button id="tab-habilidades" class="tab-button text-teal border-teal border-b-2 font-semibold px-3 py-2">Habilidades</button>
+                    </nav>
+                </div>
+
+                <!-- Conteúdo das Abas -->
+                <div id="content-projetos" class="tab-content hidden">
+                    <h3 class="text-xl font-bold mb-4">Adicionar Novo Projeto</h3>
+                    <form id="add-project-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <input type="text" name="Título" placeholder="Título do Projeto" class="sm:col-span-2 w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <input type="text" name="Descrição" placeholder="Descrição" class="sm:col-span-2 w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <input type="url" name="Link" placeholder="Link do GitHub" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <input type="url" name="imagemUrl" placeholder="URL da Imagem (opcional)" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal">
+                        <button type="submit" class="sm:col-span-2 w-full bg-teal text-near-black font-bold py-2 rounded-md hover:bg-dark-teal transition duration-300">Guardar Projeto</button>
+                    </form>
+                    <h3 class="text-xl font-bold mt-8 mb-4 border-t border-gray-600 pt-6">Projetos Existentes</h3>
+                    <div id="projects-list" class="space-y-3"></div>
+                </div>
+                
+                <div id="content-cursos" class="tab-content hidden">
+                    <h3 class="text-xl font-bold mb-4">Adicionar Novo Curso</h3>
+                    <form id="add-course-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <input type="text" name="Título" placeholder="Título do Curso" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <input type="text" name="Descrição" placeholder="Descrição (Instituição)" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <input type="text" name="Duração" placeholder="Duração (Ano)" class="sm:col-span-2 w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <button type="submit" class="sm:col-span-2 w-full bg-teal text-near-black font-bold py-2 rounded-md hover:bg-dark-teal transition duration-300">Guardar Curso</button>
+                    </form>
+                    <h3 class="text-xl font-bold mt-8 mb-4 border-t border-gray-600 pt-6">Cursos Existentes</h3>
+                    <div id="courses-list" class="space-y-3"></div>
+                </div>
+
+                <div id="content-carreira" class="tab-content hidden">
+                    <h3 class="text-xl font-bold mb-4">Adicionar Experiência de Carreira</h3>
+                    <form id="add-career-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <input type="text" name="Cargo" placeholder="Cargo" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <input type="text" name="Empresa" placeholder="Empresa" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <input type="text" name="Tempo" placeholder="Período (Ex: 2024 - Atualmente)" class="sm:col-span-2 w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <textarea name="Atividades" placeholder="Digite cada atividade numa nova linha..." class="sm:col-span-2 w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 h-24 focus:outline-none focus:border-teal" required></textarea>
+                        <button type="submit" class="sm:col-span-2 w-full bg-teal text-near-black font-bold py-2 rounded-md hover:bg-dark-teal transition duration-300">Guardar Experiência</button>
+                    </form>
+                    <h3 class="text-xl font-bold mt-8 mb-4 border-t border-gray-600 pt-6">Experiências Existentes</h3>
+                    <div id="career-list" class="space-y-3"></div>
+                </div>
+
+                <div id="content-habilidades" class="tab-content">
+                    <h3 class="text-xl font-bold mb-4">Adicionar Nova Habilidade</h3>
+                    <form id="add-skill-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <input type="text" name="Habilidade" placeholder="Nome da Habilidade (ex: Python)" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <input type="text" name="Tipo" placeholder="Categoria (ex: Programação)" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal" required>
+                        <button type="submit" class="sm:col-span-2 w-full bg-teal text-near-black font-bold py-2 rounded-md hover:bg-dark-teal transition duration-300">Guardar Habilidade</button>
+                    </form>
+                    <h3 class="text-xl font-bold mt-8 mb-4 border-t border-gray-600 pt-6">Habilidades Existentes</h3>
+                    <div id="skills-list" class="space-y-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edição -->
+    <div id="edit-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop">
+        <div class="bg-dark-cyan p-8 rounded-lg shadow-lg w-full max-w-lg">
+            <h2 class="text-2xl font-bold text-teal mb-6">Editar Item</h2>
+            <form id="edit-form">
+                <div id="edit-fields" class="space-y-4"></div>
+                <div class="flex justify-end space-x-4 mt-6">
+                    <button type="button" id="cancel-edit-button" class="bg-gray-600 text-white font-bold py-2 px-4 rounded-md hover:bg-gray-500 transition duration-300">Cancelar</button>
+                    <button type="submit" class="bg-teal text-near-black font-bold py-2 px-4 rounded-md hover:bg-dark-teal transition duration-300">Guardar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCjE0wWz8qTl341SksRTTHtObyP-vz9-KU",
+            authDomain: "portifolio-40cca.firebaseapp.com",
+            projectId: "portifolio-40cca",
+            storageBucket: "portifolio-40cca.appspot.com",
+            messagingSenderId: "506343678525",
+            appId: "1:506343678525:web:1e737d2ff9744834648054",
+            measurementId: "G-V9GD24SKWQ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        const ui = {
+            login: document.getElementById('login-section'),
+            admin: document.getElementById('admin-section'),
+            logoutBtn: document.getElementById('logout-button'),
+            lists: {
+                Projetos: document.getElementById('projects-list'),
+                Cursos: document.getElementById('courses-list'),
+                Carreira: document.getElementById('career-list'),
+                Habilidades: document.getElementById('skills-list')
+            },
+            modal: document.getElementById('edit-modal'),
+            editForm: document.getElementById('edit-form'),
+            cancelEditBtn: document.getElementById('cancel-edit-button'),
+            editFields: document.getElementById('edit-fields'),
+            tabs: {
+                projetos: { btn: document.getElementById('tab-projetos'), content: document.getElementById('content-projetos') },
+                cursos: { btn: document.getElementById('tab-cursos'), content: document.getElementById('content-cursos') },
+                carreira: { btn: document.getElementById('tab-carreira'), content: document.getElementById('content-carreira') },
+                habilidades: { btn: document.getElementById('tab-habilidades'), content: document.getElementById('content-habilidades') }
+            }
+        };
+
+        Object.values(ui.tabs).forEach(tab => {
+            tab.btn.addEventListener('click', () => {
+                Object.values(ui.tabs).forEach(t => {
+                    t.btn.className = 'tab-button text-light-gray/70 hover:text-light-gray px-3 py-2';
+                    t.content.classList.add('hidden');
+                });
+                tab.btn.className = 'tab-button text-teal border-teal border-b-2 font-semibold px-3 py-2';
+                tab.content.classList.remove('hidden');
+            });
+        });
+        ui.tabs.habilidades.btn.click();
+
+        const renderAdminItem = (listElement, item, docId, type) => {
+            const div = document.createElement('div');
+            div.className = 'bg-gray-700 p-3 rounded-md flex items-center justify-between';
+            const title = item.Título || item.Cargo || item.Habilidade;
+            div.innerHTML = `<p class="truncate">${title}</p><div class="flex space-x-2"><button data-id="${docId}" data-type="${type}" class="edit-btn text-blue-400 hover:text-blue-300">Editar</button><button data-id="${docId}" data-type="${type}" class="delete-btn text-red-500 hover:text-red-400">Excluir</button></div>`;
+            listElement.appendChild(div);
+        };
+
+        onSnapshot(collection(db, "Projetos"), s => { ui.lists.Projetos.innerHTML = ''; s.forEach(d => renderAdminItem(ui.lists.Projetos, d.data(), d.id, 'Projetos')); });
+        onSnapshot(collection(db, "Cursos"), s => { ui.lists.Cursos.innerHTML = ''; s.forEach(d => renderAdminItem(ui.lists.Cursos, d.data(), d.id, 'Cursos')); });
+        onSnapshot(collection(db, "Carreira"), s => { ui.lists.Carreira.innerHTML = ''; s.forEach(d => renderAdminItem(ui.lists.Carreira, d.data(), d.id, 'Carreira')); });
+        onSnapshot(collection(db, "Habilidades"), s => { ui.lists.Habilidades.innerHTML = ''; s.forEach(d => renderAdminItem(ui.lists.Habilidades, d.data(), d.id, 'Habilidades')); });
+
+        const handleFormSubmit = async (form, collectionName, specialFields) => {
+            const formData = new FormData(form);
+            let data = Object.fromEntries(formData.entries());
+            if (specialFields) data = specialFields(data);
+            await addDoc(collection(db, collectionName), data);
+            form.reset();
+        };
+        document.getElementById('add-project-form').addEventListener('submit', e => { e.preventDefault(); handleFormSubmit(e.target, 'Projetos'); });
+        document.getElementById('add-course-form').addEventListener('submit', e => { e.preventDefault(); handleFormSubmit(e.target, 'Cursos'); });
+        document.getElementById('add-skill-form').addEventListener('submit', e => { e.preventDefault(); handleFormSubmit(e.target, 'Habilidades'); });
+        document.getElementById('add-career-form').addEventListener('submit', e => {
+            e.preventDefault();
+            handleFormSubmit(e.target, 'Carreira', data => {
+                data.Atividades = data.Atividades.split('\n').filter(line => line.trim() !== '');
+                return data;
+            });
+        });
+
+        ui.admin.addEventListener('click', async e => {
+            const { id, type } = e.target.dataset;
+            if (e.target.classList.contains('delete-btn')) {
+                if (confirm('Tem a certeza?')) await deleteDoc(doc(db, type, id));
+            }
+            if (e.target.classList.contains('edit-btn')) {
+                const docSnap = await getDoc(doc(db, type, id));
+                if (docSnap.exists()) openEditModal(docSnap.data(), id, type);
+            }
+        });
+
+        let currentEdit = {};
+        function openEditModal(data, id, type) {
+            currentEdit = { id, type };
+            ui.editFields.innerHTML = '';
+            // CORREÇÃO: As classes de estilo foram adicionadas aqui
+            const baseClasses = "mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-teal";
+            for (const key in data) {
+                const value = data[key];
+                let inputHtml;
+                if (Array.isArray(value)) {
+                    inputHtml = `<textarea name="${key}" class="${baseClasses} h-24">${value.join('\n')}</textarea>`;
+                } else {
+                    inputHtml = `<input type="text" name="${key}" value="${value}" class="${baseClasses}">`;
+                }
+                ui.editFields.innerHTML += `<div><label class="block text-sm font-medium text-light-gray/80">${key}</label>${inputHtml}</div>`;
+            }
+            ui.modal.classList.remove('hidden');
+        }
+        ui.cancelEditBtn.addEventListener('click', () => ui.modal.classList.add('hidden'));
+        ui.editForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            let updatedData = Object.fromEntries(formData.entries());
+            if (updatedData.Atividades) {
+                updatedData.Atividades = updatedData.Atividades.split('\n').filter(line => line.trim() !== '');
+            }
+            await updateDoc(doc(db, currentEdit.type, currentEdit.id), updatedData);
+            ui.modal.classList.add('hidden');
+        });
+
+        onAuthStateChanged(auth, user => {
+            const isAdmin = user && !user.isAnonymous;
+            ui.login.classList.toggle('hidden', isAdmin);
+            ui.admin.classList.toggle('hidden', !isAdmin);
+        });
+        document.getElementById('login-form').addEventListener('submit', e => {
+            e.preventDefault();
+            signInWithEmailAndPassword(auth, e.target.email.value, e.target.password.value)
+                .catch(err => document.getElementById('login-error').textContent = 'Email ou senha inválidos.');
+        });
+        ui.logoutBtn.addEventListener('click', () => signOut(auth));
+    </script>
+</body>
+</html>
